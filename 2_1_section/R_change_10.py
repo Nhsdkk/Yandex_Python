@@ -3,4 +3,5 @@ def solution():
     print(money - s)
 
 
-solution()
+if __name__ == "__main__":
+    solution()

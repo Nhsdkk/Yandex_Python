@@ -6,4 +6,5 @@ def solution():
 Кроватка: {shelf_number[1]}.""")
 
 
-solution()
+if __name__ == "__main__":
+    solution()

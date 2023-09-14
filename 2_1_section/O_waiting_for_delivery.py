@@ -8,4 +8,5 @@ def solution():
     print(f"{new_time_h}:{new_time_m}")
 
 
-solution()
+if __name__ == "__main__":
+    solution()

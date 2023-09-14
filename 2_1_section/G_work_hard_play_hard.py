@@ -3,4 +3,5 @@ def solution():
     print("Купи слона!\n" * n)
 
 
-solution()
+if __name__ == "__main__":
+    solution()

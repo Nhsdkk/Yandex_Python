@@ -3,4 +3,5 @@ def solution():
     print((string + "\n") * 3)
 
 
-solution()
+if __name__ == "__main__":
+    solution()

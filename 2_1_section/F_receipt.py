@@ -7,4 +7,5 @@ def solution():
 Сдача: {money - cost * weight}руб""")
 
 
-solution()
+if __name__ == "__main__":
+    solution()

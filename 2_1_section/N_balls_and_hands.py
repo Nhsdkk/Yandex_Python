@@ -3,4 +3,5 @@ def solution():
     print(red + blue + 1)
 
 
-solution()
+if __name__ == "__main__":
+    solution()

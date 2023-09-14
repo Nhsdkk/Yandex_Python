@@ -3,4 +3,5 @@ def solution():
     print(f"Я больше никогда не буду писать \"{string}\"!\n" * n)
 
 
-solution()
+if __name__ == "__main__":
+    solution()
