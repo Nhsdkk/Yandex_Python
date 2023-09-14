@@ -4,4 +4,5 @@ def solution():
     print(candy_amount % people)
 
 
-solution()
+if __name__ == "__main__":
+    solution()

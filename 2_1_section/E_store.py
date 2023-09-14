@@ -3,4 +3,5 @@ def solution():
     print(int(money - cost * weight))
 
 
-solution()
+if __name__ == "__main__":
+    solution()

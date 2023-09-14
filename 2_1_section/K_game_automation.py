@@ -3,4 +3,5 @@ def solution():
     print(number[:2][::-1] + number[2:][::-1])
 
 
-solution()
+if __name__ == "__main__":
+    solution()

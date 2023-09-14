@@ -3,4 +3,5 @@ def solution():
     print(int((n / 2) * m))
 
 
-solution()
+if __name__ == "__main__":
+    solution()

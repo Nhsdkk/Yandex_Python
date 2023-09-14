@@ -4,4 +4,5 @@ def solution():
     print(round(distance / c, 2))
 
 
-solution()
+if __name__ == "__main__":
+    solution()

@@ -4,4 +4,5 @@ def solution():
     print(s + last)
 
 
-solution()
+if __name__ == "__main__":
+    solution()
