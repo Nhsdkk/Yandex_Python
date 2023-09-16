@@ -5,7 +5,23 @@ def solution():
         print("Infinite solutions")
         return
 
+    if a == b == 0 and c != 0:
+        print("No solution")
+        return
+    elif a == b == 0 and c == 0:
+        print("Infinite solutions")
+        return
+
+    if a == 0:
+        print(-c / b)
+        return
+
     d = b**2 - 4 * a * c
+
+    if d < 0:
+        print("No solution")
+        return
+
     a1 = (-b + (d**0.5)) / (2 * a)
     a2 = (-b - (d**0.5)) / (2 * a)
 
