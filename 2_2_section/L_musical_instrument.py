@@ -1,7 +1,7 @@
 def solution():
     a, b, c = int(input()), int(input()), int(input())
 
-    if any([a + b <= c, a + c <= b, b + c <= a]):
+    if a + b <= c or a + c <= b or b + c <= a:
         print("NO")
     else:
         print("YES")

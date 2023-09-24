@@ -1,12 +1,10 @@
 def solution():
-    n1, n2 = input(), input()
-    numbers = [int(char) for char in n1] + [int(char) for char in n2]
+    number1, number2 = int(input()), int(input())
+    n11, n12, n21, n22 = number1 // 10, number1 % 10, number2 // 10, number2 % 10
 
-    max_n, min_n = max(numbers), min(numbers)
-    numbers.remove(max_n)
-    numbers.remove(min_n)
+    max_n, min_n = max(n11, n12, n21, n22), min(n11, n12, n21, n22)
 
-    print(f"{max_n}{sum(numbers) % 10}{min_n}")
+    print(f"{max_n}{(n11 + n12 + n21 + n22 - max_n - min_n) % 10}{min_n}")
 
 
 if __name__ == "__main__":

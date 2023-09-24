@@ -1,8 +1,13 @@
 def solution():
-    arr = [int(input()), int(input()), int(input())]
-    arr.sort(reverse=True)
+    n1, n2, n3 = int(input()), int(input()), int(input())
+    max_n = max(n1, n2, n3)
 
-    cos = (arr[1]**2 + arr[2]**2 - arr[0]**2) / (2 * arr[1] * arr[2])
+    if max_n == n1:
+        cos = (n2**2 + n3**2 - max_n**2) / (2 * n2 * n3)
+    elif max_n == n2:
+        cos = (n1 ** 2 + n3 ** 2 - max_n ** 2) / (2 * n1 * n3)
+    else:
+        cos = (n2 ** 2 + n1 ** 2 - max_n ** 2) / (2 * n1 * n2)
 
     if cos == 0:
         print("100%")

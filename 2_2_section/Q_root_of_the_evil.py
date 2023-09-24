@@ -28,9 +28,8 @@ def solution():
     if a1 == a2:
         print(round(a1, 2))
     else:
-        res = [round(a1, 2), round(a2, 2)]
-        res.sort()
-        print(res[0], res[1])
+        res1, res2 = round(a1, 2), round(a2, 2)
+        print(min(res1, res2), max(res1, res2))
 
 
 if __name__ == "__main__":
