@@ -1,8 +1,8 @@
 def solution():
     number = int(input())
-    n1, n2 = number // 1000, number // 100 - (number // 1000 * 10),
-    n3, n4 = number // 10 - (number // 100 * 10), number % 10
-    print(n2, n1, n4, n3, sep="")
+    int1, int2 = number // 1000, number // 100 - (number // 1000 * 10),
+    int3, int4 = number // 10 - (number // 100 * 10), number % 10
+    print(int2, int1, int4, int3, sep="")
 
 
 if __name__ == "__main__":

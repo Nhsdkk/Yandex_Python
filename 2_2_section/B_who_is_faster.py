@@ -1,6 +1,6 @@
 def solution():
-    p, v = int(input()), int(input())
-    if p > v:
+    petya, vasya = int(input()), int(input())
+    if petya > vasya:
         print("Петя")
     else:
         print("Вася")

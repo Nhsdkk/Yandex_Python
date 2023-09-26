@@ -1,15 +1,15 @@
 def solution():
-    pet, vas, tol = int(input()), int(input()), int(input())
+    petya, vasya, tolya = int(input()), int(input()), int(input())
 
-    if pet >= vas >= tol:
+    if petya >= vasya >= tolya:
         first, second, third = "Петя", "Вася", "Толя"
-    elif pet >= tol >= vas:
+    elif petya >= tolya >= vasya:
         first, second, third = "Петя", "Толя", "Вася"
-    elif vas >= pet >= tol:
+    elif vasya >= petya >= tolya:
         first, second, third = "Вася", "Петя", "Толя"
-    elif vas >= tol >= pet:
+    elif vasya >= tolya >= petya:
         first, second, third = "Вася", "Толя", "Петя"
-    elif tol >= pet >= vas:
+    elif tolya >= petya >= vasya:
         first, second, third = "Толя", "Петя", "Вася"
     else:
         first, second, third = "Толя", "Вася", "Петя"

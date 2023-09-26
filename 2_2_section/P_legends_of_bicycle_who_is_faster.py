@@ -16,16 +16,21 @@ def solution():
     else:
         first, second, third = "Вася", "Петя", "Толя"
 
-    centered_first, centered_second = f"{first:^8}", f"{second:^8}"
-    centered_third = f"{third:^8}"
+    substring_aligning_length = 8
+    string_aligning_length = substring_aligning_length * 3
 
-    print(f"{centered_first:^24}")
-    print(f"{centered_second:<24}")
-    print(f"{centered_third:>24}")
+    centered_first, centered_second = f"{first:^{substring_aligning_length}}", f"{second:^{substring_aligning_length}}"
+    centered_third = f"{third:^{substring_aligning_length}}"
+
+    print(f"{centered_first:^{string_aligning_length}}")
+    print(f"{centered_second:<{string_aligning_length}}")
+    print(f"{centered_third:>{string_aligning_length}}")
 
     str1, str2, str3 = "I", "II", "III"
 
-    print(f"{str2:^8}" + f"{str1:^8}" + f"{str3:^8}")
+    place_string = f"{str2:^{substring_aligning_length}}" + f"{str1:^{substring_aligning_length}}"
+    place_string += f"{str3:^{substring_aligning_length}}"
+    print(place_string)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 def solution():
-    a, b, c = int(input()), int(input()), int(input())
+    tube1, tube2, tube3 = int(input()), int(input()), int(input())
 
-    if a + b <= c or a + c <= b or b + c <= a:
+    if tube1 + tube2 <= tube3 or tube1 + tube3 <= tube2 or tube2 + tube3 <= tube1:
         print("NO")
     else:
         print("YES")

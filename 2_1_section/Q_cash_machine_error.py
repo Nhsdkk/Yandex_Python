@@ -1,7 +1,7 @@
 def solution():
-    s, last2 = int(input()), input()
+    summ, last2 = int(input()), input()
     last = int(last2, 2)
-    print(s + last)
+    print(summ + last)
 
 
 if __name__ == "__main__":

@@ -1,10 +1,10 @@
 def solution():
-    el, gn, hu = input(), input(), input()
+    elfs, gnomes, humans = input(), input(), input()
 
-    if el[0] == gn[0] == hu[0]:
-        print(el[0])
-    elif el[1] == gn[1] == hu[1]:
-        print(el[1])
+    if elfs[0] == gnomes[0] == humans[0]:
+        print(elfs[0])
+    elif elfs[1] == gnomes[1] == humans[1]:
+        print(elfs[1])
 
 
 if __name__ == "__main__":

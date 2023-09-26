@@ -1,10 +1,10 @@
 def solution():
-    pet, vas, tol = int(input()), int(input()), int(input())
-    if pet >= vas >= tol or pet >= tol >= vas:
+    petya, vasya, tolya = int(input()), int(input()), int(input())
+    if petya >= vasya >= tolya or petya >= tolya >= vasya:
         print("Петя")
-    elif vas >= pet >= tol or vas >= tol >= pet:
+    elif vasya >= petya >= tolya or vasya >= tolya >= petya:
         print("Вася")
-    elif tol >= pet >= vas or tol >= vas >= pet:
+    elif tolya >= petya >= vasya or tolya >= vasya >= petya:
         print("Толя")
 
 
