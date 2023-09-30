@@ -1,14 +1,14 @@
 def solution():
     n = int(input())
-    cnt = 0
+    counter = 0
 
     for _ in range(n):
         string = input()
 
         if "зайка" in string:
-            cnt += 1
+            counter += 1
 
-    print(cnt)
+    print(counter)
 
 
 if __name__ == "__main__":

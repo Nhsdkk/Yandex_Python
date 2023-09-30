@@ -1,16 +1,16 @@
-def gcd(n1, n2):
-    while n1 != n2:
-        if n1 > n2:
-            n1 -= n2
+def gcd(number1, number2):
+    while number1 != number2:
+        if number1 > number2:
+            number1 -= number2
         else:
-            n2 -= n1
+            number2 -= number1
 
-    return n1
+    return number1
 
 
 def solution():
-    n1, n2 = int(input()), int(input())
-    lcm = (n1 * n2) // gcd(n1, n2)
+    number1, number2 = int(input()), int(input())
+    lcm = (number1 * number2) // gcd(number1, number2)
 
     print(lcm)
 

@@ -1,9 +1,9 @@
 def solution():
-    n = int(input())
+    number = int(input())
     simple_nums = []
-    res = []
+    result = []
 
-    for i in range(2, n + 1):
+    for i in range(2, number + 1):
         is_simple = True
         for item in simple_nums:
             if i % item == 0:
@@ -13,19 +13,19 @@ def solution():
         if is_simple:
             simple_nums.append(i)
 
-    if n in simple_nums:
-        print(f"1 * {n}")
+    if number in simple_nums:
+        print(f"1 * {number}")
 
-    while n not in simple_nums:
+    while number not in simple_nums:
         for i in simple_nums:
-            if n % i == 0:
-                res.append(i)
-                n //= i
+            if number % i == 0:
+                result.append(i)
+                number //= i
                 break
 
-    res.append(n)
+    result.append(number)
 
-    print(' * '.join([str(item) for item in res]))
+    print(' * '.join([str(item) for item in result]))
 
 
 if __name__ == "__main__":

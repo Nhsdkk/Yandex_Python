@@ -1,14 +1,14 @@
 def solution():
-    n = int(input())
+    number = int(input())
 
-    if n == 1:
+    if number == 1:
         print("NO")
         return
 
     is_simple = True
 
-    for i in range(2, n // 2 + 1):
-        if n % i == 0:
+    for i in range(2, number // 2 + 1):
+        if number % i == 0:
             is_simple = False
             break
 

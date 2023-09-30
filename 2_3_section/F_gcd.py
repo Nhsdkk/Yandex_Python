@@ -1,13 +1,13 @@
 def solution():
-    n1, n2 = int(input()), int(input())
+    number1, number2 = int(input()), int(input())
 
-    while n1 != n2:
-        if n1 > n2:
-            n1 -= n2
+    while number1 != number2:
+        if number1 > number2:
+            number1 -= number2
         else:
-            n2 -= n1
+            number2 -= number1
 
-    print(n1)
+    print(number1)
 
 
 if __name__ == "__main__":

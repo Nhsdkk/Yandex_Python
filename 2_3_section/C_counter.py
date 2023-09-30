@@ -1,7 +1,7 @@
 def solution():
-    n1, n2 = int(input()), int(input())
+    number1, number2 = int(input()), int(input())
 
-    print(" ".join([str(i) for i in range(n1, n2 + 1)]))
+    print(" ".join([str(i) for i in range(number1, number2 + 1)]))
 
 
 if __name__ == "__main__":

@@ -1,11 +1,11 @@
 def solution():
-    n = int(input())
+    number = int(input())
 
-    res = 1
-    for i in range(2, n + 1):
-        res *= i
+    result = 1
+    for i in range(2, number + 1):
+        result *= i
 
-    print(res)
+    print(result)
 
 
 if __name__ == "__main__":

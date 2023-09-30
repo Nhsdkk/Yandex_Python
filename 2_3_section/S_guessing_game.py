@@ -1,5 +1,5 @@
 def solution():
-    sep = 500
+    separator = 500
     print(500)
     lowest = 0
     highest = 1001
@@ -10,12 +10,12 @@ def solution():
             break
 
         if inp == "Больше":
-            sep, lowest = (highest - sep) // 2 + sep, sep
+            separator, lowest = (highest - separator) // 2 + separator, separator
 
         if inp == "Меньше":
-            sep, highest = sep - (sep - lowest) // 2, sep
+            separator, highest = separator - (separator - lowest) // 2, separator
 
-        print(sep)
+        print(separator)
 
 
 if __name__ == "__main__":
