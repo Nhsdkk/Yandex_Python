@@ -1,11 +1,10 @@
 def solution():
-    pet, van, tol = int(input()), int(input()), int(input())
-    maximum = max(pet, van, tol)
-    if maximum == pet:
+    petya, vasya, tolya = int(input()), int(input()), int(input())
+    if petya >= vasya >= tolya or petya >= tolya >= vasya:
         print("Петя")
-    elif maximum == van:
+    elif vasya >= petya >= tolya or vasya >= tolya >= petya:
         print("Вася")
-    elif maximum == tol:
+    elif tolya >= petya >= vasya or tolya >= vasya >= petya:
         print("Толя")
 
 

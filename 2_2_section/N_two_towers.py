@@ -1,13 +1,22 @@
 def solution():
-    n = input()
-    arr = [int(char) for char in n]
+    number = int(input())
+    n1, n2, n3 = number // 100, number // 10 - (number // 100 * 10), number % 10
 
-    arr.sort()
+    min_n, max_n = min(n1, n2, n3), max(n1, n2, n3)
 
-    if 0 in arr:
-        print(f"{arr[1]}{arr[0]} {arr[2]}{arr[1]}")
+    sr = 0
+
+    if (min_n == n1 and max_n == n2) or (min_n == n2 and max_n == n1):
+        sr = n3
+    elif (min_n == n2 and max_n == n3) or (min_n == n3 and max_n == n2):
+        sr = n1
+    elif (min_n == n1 and max_n == n3) or (min_n == n3 and max_n == n1):
+        sr = n2
+
+    if n1 == 0 or n2 == 0 or n3 == 0:
+        print(f"{sr}{min_n} {max_n}{sr}")
     else:
-        print(f"{arr[0]}{arr[1]} {arr[2]}{arr[1]}")
+        print(f"{min_n}{sr} {max_n}{sr}")
 
 
 if __name__ == "__main__":
