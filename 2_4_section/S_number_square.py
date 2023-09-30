@@ -1,7 +1,7 @@
 import math
 
 
-def circle(matrix, k, n, number):
+def rectangle(matrix, k, n, number):
     for j in [n - 1 - k, k]:
         for i in range(k, n - k):
             matrix[i][j] = f"{number}"
@@ -26,7 +26,7 @@ def solution():
         matrix.append(matrix_row)
 
     for i in range(n):
-        circle(matrix, i, n, i + 1)
+        rectangle(matrix, i, n, i + 1)
 
     number_align_value = len(str(math.ceil(n / 2)))
 
