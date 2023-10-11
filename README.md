@@ -1,1 +1,1 @@
-# lab-0
+# Yandex Python
