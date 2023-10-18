@@ -4,7 +4,7 @@ def solution():
 
     for _ in range(n):
         word = input()
-        if word[0] != "а" and word[0] != "б" and word[0] != "в":
+        if word[0] in ["а", "б", "в"]:
             are_correct = False
 
     print("YES" if are_correct else "NO")
