@@ -1,0 +1,1 @@
+{i: sorted(set([1] + [divisor for divisor in range(2, i // 2 + 1) if i % divisor == 0] + [i])) for i in numbers}
