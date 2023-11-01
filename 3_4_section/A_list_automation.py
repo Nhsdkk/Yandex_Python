@@ -1,6 +1,6 @@
 def solution():
     splitted_string = input().split()
-    print("\n".join([f"{i + 1}. {splitted_string[i]}" for i in range(len(splitted_string))]))
+    print("\n".join([f"{i}. {item}" for i, item in enumerate(splitted_string, start=1)]))
 
 
 if __name__ == "__main__":
