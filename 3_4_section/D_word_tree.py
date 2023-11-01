@@ -1,6 +1,3 @@
-import itertools
-
-
 def solution():
     prompt = input().split()
 
