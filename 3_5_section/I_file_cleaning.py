@@ -20,8 +20,9 @@ def solution():
         cleared_lines.append(string)
 
     with open(output_file, "w", encoding="UTF-8") as file:
-        file.writelines(cleared_lines)
+        file.writelines("\n".join(cleared_lines))
 
 
 if __name__ == "__main__":
     solution()
+

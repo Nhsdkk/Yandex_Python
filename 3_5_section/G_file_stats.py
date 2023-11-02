@@ -1,5 +1,7 @@
 def solution():
-    with open("numbers.txt", "r") as file:
+    input_file = input()
+
+    with open(input_file, "r") as file:
         data = [line.rstrip() for line in file.readlines()]
 
     numbers = []
