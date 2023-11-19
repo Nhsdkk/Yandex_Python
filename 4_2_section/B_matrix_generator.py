@@ -1,6 +1,5 @@
 def make_matrix(size, value: int = 0):
     if type(size) is int:
-        return [[value] * size] * size
+        return [[value for _ in range(size)] for _ in range(size)]
     else:
-        return [[value] * size[0]] * size[1]
-
+        return [[value for _ in range(size[0])] for _ in range(size[1])]

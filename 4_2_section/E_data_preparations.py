@@ -6,7 +6,5 @@ def to_string(*args, **kwargs):
     if kwargs_end is not None:
         end = kwargs_end
 
-    print(args)
-
     result = sep.join([str(item) for item in args]) + end
-    print(result.__repr__())
+    return result.__repr__()
