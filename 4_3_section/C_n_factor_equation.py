@@ -1,0 +1,5 @@
+def make_equation(*args) -> str:
+    if len(args) == 1:
+        return f"{args[0]}"
+
+    return f"({make_equation(*args[:-1])}) * x + {args[-1]}"
