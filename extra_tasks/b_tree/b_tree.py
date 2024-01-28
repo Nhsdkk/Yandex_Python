@@ -43,7 +43,11 @@ class Node:
                         Node(is_root=False, items=[self.items[-1]], l_node=l_node2, r_node=r_node2)
                     ]
                     self.nodes = new_nodes
+<<<<<<< HEAD
                     self.items = [self.items[1]]    
+=======
+                    self.items = [self.items[1]]
+>>>>>>> b_tree
                     return None
 
                 if len(self.nodes) > MAX_TREE_WIDTH and len(self.items) > MAX_ITEMS_LEN:
@@ -139,6 +143,10 @@ class Node:
             return False
         return item in self.nodes[1]
 
+<<<<<<< HEAD
+=======
+    # @lru_cache(None)
+>>>>>>> b_tree
     def __repr__(self) -> str:
         info = dict()
         info["items"] = self.items

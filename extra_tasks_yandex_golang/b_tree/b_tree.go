@@ -56,11 +56,18 @@ func (n *Node) Insert(value int) (valueToAdd int, nodesToAdd []*Node, isEmpty bo
 	if len(n.values) == 0 {
 		n.values = append(n.values, value)
 		sort.Ints(n.values)
+<<<<<<< HEAD
 		return 0, nil, true
 	}
 
 	if value > slices.Max(n.values) && len(n.children) >= 2 {
 		fmt.Println(fmt.Sprintf("Inserting to end in node %s...", n.Repr()))
+=======
+		return 0, nil, false
+	}
+
+	if value > slices.Max(n.values) && len(n.children) >= 2 {
+>>>>>>> b_tree
 		valueResult, nodesResult, emptyResult := n.children[len(n.children)-1].Insert(value)
 		if emptyResult {
 			return 0, nil, true
@@ -78,6 +85,7 @@ func (n *Node) Insert(value int) (valueToAdd int, nodesToAdd []*Node, isEmpty bo
 
 			return splitValue, splitNodes, false
 		}
+<<<<<<< HEAD
 		return 0, nil, true
 	}
 
@@ -104,6 +112,31 @@ func (n *Node) Insert(value int) (valueToAdd int, nodesToAdd []*Node, isEmpty bo
 				}
 				return 0, nil, true
 			}
+=======
+		return 0, nil, false
+	}
+
+	for i, compareValue := range n.values {
+		if value < compareValue {
+			valueResult, nodesResult, emptyResult := n.children[i].Insert(value)
+			if emptyResult {
+				return 0, nil, true
+			}
+			n.modifyChildren(i, nodesResult)
+			n.modifyValues(valueResult)
+
+			if len(n.values) > MaxItemAmount && len(n.children) > MaxChildrenAmount {
+				if n.isRoot {
+					n.splitRootNode()
+					return 0, nil, true
+				}
+
+				splitValue, splitNodes := n.splitNode()
+
+				return splitValue, splitNodes, false
+			}
+			return 0, nil, false
+>>>>>>> b_tree
 		}
 	}
 
