@@ -4,7 +4,7 @@ class Rectangle:
         self.p2 = (max(point1[0], point2[0]), min(point1[1], point2[1]))
         self.dx = abs(point1[0] - point2[0])
         self.dy = abs(point1[1] - point2[1])
-        self.center = (self.p1[0] + self.dx / 2, self.p1[1] - self.dy / 2)
+        self.center = (self.p1[0] + self.dx / 2.0, self.p1[1] - self.dy / 2.0)
 
     def area(self):
         return round(self.dx * self.dy, 2)
@@ -23,30 +23,21 @@ class Rectangle:
     def resize(self, width, height):
         self.dx = width
         self.dy = height
-        self.center = (self.p1[0] + self.dx / 2, self.p1[1] - self.dy / 2)
+        self.center = (self.p1[0] + self.dx / 2.0, self.p1[1] - self.dy / 2.0)
         self.p2 = (self.p1[0] + width, self.p1[1] - height)
 
     def scale(self, factor):
-        self.p1 = (self.p1[0] - (factor - 1) * self.dx / 2, self.p1[1] + (factor - 1) * self.dy / 2)
-        self.p2 = (self.p2[0] + (factor - 1) * self.dx / 2, self.p2[1] - (factor - 1) * self.dy / 2)
         self.dx *= factor
         self.dy *= factor
+        self.dy = round(self.dy, 2)
+        self.dx = round(self.dx, 2)
+        self.p1 = (self.center[0] - self.dx / 2.0, self.center[1] + self.dy / 2.0)
+        self.p2 = (self.p1[0] + self.dx, self.p1[1] - self.dy)
 
     def get_size(self):
         return round(self.p2[0] - self.p1[0], 2), round(self.p1[1] - self.p2[1], 2)
 
     def turn(self):
-        self.dx , self.dy = self.dy, self.dx
-        self.p1 = (self.center[0] - self.dx / 2, self.center[1] - self.dy / 2)
+        self.dx, self.dy = self.dy, self.dx
+        self.p1 = (self.center[0] - self.dx / 2.0, self.center[1] + self.dy / 2.0)
         self.p2 = (self.p1[0] + self.dx, self.p1[1] - self.dy)
-
-
-# rect = Rectangle((3.14, 2.71), (-3.14, -2.71))
-# print(rect.get_pos(), rect.get_size(), sep='\n')
-# rect.scale(2.0)
-# print(rect.get_pos(), rect.get_size(), sep='\n')
-
-rect = Rectangle((3.14, 2.71), (-3.14, -2.71))
-print(rect.get_pos(), rect.get_size(), sep='\n')
-rect.turn()
-print(rect.get_pos(), rect.get_size(), sep='\n')
