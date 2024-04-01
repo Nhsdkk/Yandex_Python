@@ -22,8 +22,8 @@ func (n *Node) Create(values []int, children []*Node, isRoot bool) {
 	n.isRoot = isRoot
 }
 
-func (n *Node) modifyChildren(index int, children []*Node) {
-	n.children = append(n.children[:index], n.children[index+1:]...)
+func (n *Node) modifyChildren(children []*Node) {
+	//n.children = append(n.children[:index], n.children[index+1:]...)
 	n.children = append(n.children, children...)
 	sort.Slice(n.children, func(i, j int) bool {
 		return utils.Sum(n.children[i].values) < utils.Sum(n.children[j].values)
@@ -37,12 +37,15 @@ func (n *Node) modifyValues(value int) {
 
 func (n *Node) splitNode() (value int, nodes []*Node) {
 	var children1, children2 []*Node
+
 	if len(n.children) != 0 && len(n.children)%2 == 1 {
 		children1, children2 = n.children[:len(n.values)/2], n.children[len(n.values)/2:]
 	} else if len(n.children) != 0 && len(n.children)%2 == 0 {
 		children1, children2 = n.children[:len(n.values)/2+1], n.children[len(n.values)/2+1:]
 	}
+
 	node1, node2 := &Node{isRoot: false, values: n.values[:len(n.values)/2], children: children1}, &Node{isRoot: false, values: n.values[len(n.values)/2+1:], children: children2}
+
 	return n.values[len(n.values)/2], []*Node{node1, node2}
 }
 
@@ -59,65 +62,121 @@ func (n *Node) Insert(value int) (valueToAdd int, nodesToAdd []*Node, isEmpty bo
 		return 0, nil, false
 	}
 
-	if value > slices.Max(n.values) && len(n.children) >= 2 {
-		valueResult, nodesResult, emptyResult := n.children[len(n.children)-1].Insert(value)
-		if emptyResult {
+	if value > n.values[len(n.values)-1] && len(n.children) >= 2 {
+		newValue, newChildren, empty := n.children[len(n.children)-1].Insert(value)
+		if empty {
 			return 0, nil, true
 		}
-		n.modifyChildren(len(n.children)-1, nodesResult)
-		n.modifyValues(valueResult)
+		n.modifyValues(newValue)
+		n.modifyChildren(newChildren)
 
-		if len(n.values) > MaxItemAmount && len(n.children) > MaxChildrenAmount {
+		if len(n.values) >= MaxItemAmount {
 			if n.isRoot {
 				n.splitRootNode()
-				return 0, nil, true
+				return 0, nil, false
 			}
-
-			splitValue, splitNodes := n.splitNode()
-
-			return splitValue, splitNodes, false
+			splitValue, children := n.splitNode()
+			return splitValue, children, false
 		}
+
 		return 0, nil, false
 	}
 
-	for i, compareValue := range n.values {
-		if value < compareValue {
-			valueResult, nodesResult, emptyResult := n.children[i].Insert(value)
-			if emptyResult {
-				return 0, nil, true
-			}
-			n.modifyChildren(i, nodesResult)
-			n.modifyValues(valueResult)
+	var prVal, curVal *int = nil, nil
 
-			if len(n.values) > MaxItemAmount && len(n.children) > MaxChildrenAmount {
-				if n.isRoot {
-					n.splitRootNode()
+	for i := 0; i < len(n.values)+1; i++ {
+		prVal = curVal
+		if i == len(n.values) {
+			curVal = nil
+		} else {
+			curVal = &n.values[i]
+		}
+
+		if prVal == nil {
+			if value < *curVal && len(n.children) >= 2 {
+				newValue, newChildren, empty := n.children[0].Insert(value)
+				if empty {
 					return 0, nil, true
 				}
+				n.modifyValues(newValue)
+				n.modifyChildren(newChildren)
 
-				splitValue, splitNodes := n.splitNode()
+				if len(n.values) >= MaxItemAmount {
+					if n.isRoot {
+						n.splitRootNode()
+						return 0, nil, false
+					}
+					splitValue, children := n.splitNode()
+					return splitValue, children, false
+				}
 
-				return splitValue, splitNodes, false
+				return 0, nil, false
 			}
-			return 0, nil, false
+
 		}
 	}
 
-	if len(n.values) < MaxItemAmount {
-		n.modifyValues(value)
-		return 0, nil, true
-	}
-
-	if n.isRoot {
-		n.modifyValues(value)
-		n.splitRootNode()
-		return 0, nil, true
-	}
-
-	n.modifyValues(value)
-	splittedValue, splittedNodes := n.splitNode()
-
-	return splittedValue, splittedNodes, false
+	//if value > slices.Max(n.values) && len(n.children) >= 2 {
+	//	valueResult, nodesResult, emptyResult := n.children[len(n.children)-1].Insert(value)
+	//	if emptyResult {
+	//		return 0, nil, true
+	//	}
+	//	n.modifyChildren(len(n.children)-1, nodesResult)
+	//	n.modifyValues(valueResult)
+	//
+	//	if len(n.values) > MaxItemAmount && len(n.children) > MaxChildrenAmount {
+	//		fmt.Printf("SPLITTING IN NODE WITH VALUES %v\n", n.values)
+	//		if n.isRoot {
+	//			n.splitRootNode()
+	//			return 0, nil, true
+	//		}
+	//
+	//		splitValue, splitNodes := n.splitNode()
+	//
+	//		return splitValue, splitNodes, false
+	//	}
+	//
+	//	return 0, nil, false
+	//}
+	//
+	//for i, compareValue := range n.values {
+	//	if value < compareValue {
+	//		valueResult, nodesResult, emptyResult := n.children[i].Insert(value)
+	//		if emptyResult {
+	//			return 0, nil, true
+	//		}
+	//		n.modifyChildren(i, nodesResult)
+	//		n.modifyValues(valueResult)
+	//
+	//		if len(n.values) > MaxItemAmount && len(n.children) > MaxChildrenAmount {
+	//			if n.isRoot {
+	//				n.splitRootNode()
+	//				return 0, nil, true
+	//			}
+	//
+	//			splitValue, splitNodes := n.splitNode()
+	//
+	//			return splitValue, splitNodes, false
+	//		}
+	//		return 0, nil, false
+	//	}
+	//}
+	//
+	//if len(n.values) < MaxItemAmount {
+	//	n.modifyValues(value)
+	//	return 0, nil, true
+	//}
+	//
+	//if n.isRoot {
+	//	n.modifyValues(value)
+	//	n.splitRootNode()
+	//	return 0, nil, true
+	//}
+	//
+	//n.modifyValues(value)
+	//splittedValue, splittedNodes := n.splitNode()
+	//
+	//return splittedValue, splittedNodes, false
 }
 
 func (n *Node) Includes(value int) bool {

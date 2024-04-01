@@ -27,26 +27,20 @@ class Rectangle:
         self.p2 = (self.p1[0] + width, self.p1[1] - height)
 
     def scale(self, factor):
-        self.p1 = (self.p1[0] - (factor - 1) * self.dx / 2, self.p1[1] + (factor - 1) * self.dy / 2)
-        self.p2 = (self.p2[0] + (factor - 1) * self.dx / 2, self.p2[1] - (factor - 1) * self.dy / 2)
         self.dx *= factor
         self.dy *= factor
+        self.p1 = (self.center[0] - self.dx / 2, self.center[1] + self.dy / 2)
+        self.p2 = (self.p1[0] + self.dx, self.p1[1] - self.dy)
 
     def get_size(self):
         return round(self.p2[0] - self.p1[0], 2), round(self.p1[1] - self.p2[1], 2)
 
     def turn(self):
-        self.dx , self.dy = self.dy, self.dx
-        self.p1 = (self.center[0] - self.dx / 2, self.center[1] - self.dy / 2)
+        self.dx, self.dy = self.dy, self.dx
+        self.p1 = (self.center[0] - self.dx / 2, self.center[1] + self.dy / 2)
         self.p2 = (self.p1[0] + self.dx, self.p1[1] - self.dy)
-
-
-# rect = Rectangle((3.14, 2.71), (-3.14, -2.71))
-# print(rect.get_pos(), rect.get_size(), sep='\n')
-# rect.scale(2.0)
-# print(rect.get_pos(), rect.get_size(), sep='\n')
 
 rect = Rectangle((3.14, 2.71), (-3.14, -2.71))
 print(rect.get_pos(), rect.get_size(), sep='\n')
-rect.turn()
+rect.scale(5.5)
 print(rect.get_pos(), rect.get_size(), sep='\n')
