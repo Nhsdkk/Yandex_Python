@@ -22,11 +22,11 @@ func createBTree() *b_tree.Node {
 
 func testBTree(tree *b_tree.Node) {
 	fmt.Println(tree.Repr())
-	for i := 1; i < 8; i++ {
-		if i == 5 {
-			tree.Insert(5)
-			continue
-		}
+	for i := 1; i < 10; i++ {
+		//if i == 5 {
+		//	tree.Insert(5)
+		//	continue
+		//}
 		tree.Insert(i)
 		fmt.Println(tree.Repr())
 	}
